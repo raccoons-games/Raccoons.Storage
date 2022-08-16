@@ -1,0 +1,26 @@
+{
+  "name": "com.raccoons.storage",
+  "displayName": "Raccoons Storage",
+  "version": "0.1.0",
+  "description": "Storage framework, provides base composite storage architecture and PlayerPrefs-based implementation",
+  "unity": "2018.1",
+  "author": "Raccoons Games",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raccoons-games/Raccoons.Storage.git"
+  },
+  "keywords": [
+    "unity",
+    "framework",
+    "storage",
+    "player-prefs"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/raccoons-games/Raccoons.Storage/issues"
+  },
+  "homepage": "https://github.com/raccoons-games/Raccoons.Storage#readme",
+  "dependencies": {
+    "com.raccoons.serialization": ""
+  }
+}
