@@ -1,9 +1,7 @@
 {
     "name": "Raccoons.Storage",
     "rootNamespace": "",
-    "references": [
-        "GUID:ec03ca4dd96a8824b8a2499a06a3a9dc"
-    ],
+    "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
