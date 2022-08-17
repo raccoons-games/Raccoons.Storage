@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Threading;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Raccoons.Storage
@@ -9,7 +10,7 @@ namespace Raccoons.Storage
         {
         }
 
-        protected override Task DeleteAsyncInternal(string fullPath)
+        protected override Task DeleteAsyncInternal(string fullPath, CancellationToken cancellationToken = default)
         {
             DeleteInternal(fullPath);
             return Task.CompletedTask;
@@ -20,7 +21,7 @@ namespace Raccoons.Storage
             PlayerPrefs.DeleteKey(fullPath);
         }
 
-        protected override Task<bool> ExistsAsyncInternal(string fullPath)
+        protected override Task<bool> ExistsAsyncInternal(string fullPath, CancellationToken cancellationToken = default)
         {
             bool result = ExistsInternal(fullPath);
             return Task.FromResult(result);
@@ -31,7 +32,7 @@ namespace Raccoons.Storage
             return PlayerPrefs.HasKey(fullPath);
         }
 
-        protected override Task<float> GetFloatAsyncInternal(string fullPath)
+        protected override Task<float> GetFloatAsyncInternal(string fullPath, CancellationToken cancellationToken = default)
         {
             float result = GetFloatInternal(fullPath);
             return Task.FromResult(result);
@@ -42,7 +43,7 @@ namespace Raccoons.Storage
             return PlayerPrefs.GetFloat(fullPath);
         }
 
-        protected override Task<int> GetIntAsyncInternal(string fullPath)
+        protected override Task<int> GetIntAsyncInternal(string fullPath, CancellationToken cancellationToken = default)
         {
             int result = GetIntInternal(fullPath);
             return Task.FromResult(result);
@@ -53,7 +54,7 @@ namespace Raccoons.Storage
             return PlayerPrefs.GetInt(fullPath);
         }
 
-        protected override Task<string> GetStringAsyncInternal(string fullPath)
+        protected override Task<string> GetStringAsyncInternal(string fullPath, CancellationToken cancellationToken = default)
         {
             string result = GetStringInternal(fullPath);
             return Task.FromResult(result);
@@ -64,7 +65,7 @@ namespace Raccoons.Storage
             return PlayerPrefs.GetString(fullPath);
         }
 
-        protected override Task SetFloatAsyncInternal(string fullPath, float value)
+        protected override Task SetFloatAsyncInternal(string fullPath, float value, CancellationToken cancellationToken = default)
         {
             SetFloatInternal(fullPath, value);
             return Task.CompletedTask;
@@ -75,7 +76,7 @@ namespace Raccoons.Storage
             PlayerPrefs.SetFloat(fullPath, value);
         }
 
-        protected override Task SetIntAsyncInternal(string fullPath, int value)
+        protected override Task SetIntAsyncInternal(string fullPath, int value, CancellationToken cancellationToken = default)
         {
             SetIntInternal(fullPath, value);
             return Task.CompletedTask;
@@ -86,7 +87,7 @@ namespace Raccoons.Storage
             PlayerPrefs.SetInt(fullPath, value);
         }
 
-        protected override Task SetStringAsyncInternal(string fullPath, string value)
+        protected override Task SetStringAsyncInternal(string fullPath, string value, CancellationToken cancellationToken = default)
         {
             SetStringInternal(fullPath, value);
             return Task.CompletedTask;
