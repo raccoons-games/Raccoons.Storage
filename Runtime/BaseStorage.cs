@@ -184,5 +184,37 @@ namespace Raccoons.Storage
         }
 
         protected abstract void DeleteInternal(string fullPath);
+
+        public Task<byte[]> GetBytesAsync(string key, CancellationToken cancellationToken = default)
+        {
+            string fullPath = PathOf(key);
+            return GetBytesAsyncInternal(key, cancellationToken);
+        }
+
+        protected abstract Task<byte[]> GetBytesAsyncInternal(string key, CancellationToken cancellationToken);
+
+        public Task SetBytesAsync(string key, byte[] value, CancellationToken cancellationToken = default)
+        {
+            string fullPath = PathOf(key);
+            return SetBytesAsyncInternal(key, value, cancellationToken);
+        }
+
+        protected abstract Task SetBytesAsyncInternal(string key, byte[] value, CancellationToken cancellationToken);
+
+        public byte[] GetBytes(string key)
+        {
+            string fullPath = PathOf(key);
+            return GetBytesInternal(key);
+        }
+
+        protected abstract byte[] GetBytesInternal(string key);
+
+        public void SetBytes(string key, byte[] value)
+        {
+            string fullPath = PathOf(key);
+            SetBytesInternal(key, value);
+        }
+
+        protected abstract void SetBytesInternal(string key, byte[] value);
     }
 }
