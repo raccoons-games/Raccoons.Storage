@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -32,6 +33,18 @@ namespace Raccoons.Storage
             return PlayerPrefs.HasKey(fullPath);
         }
 
+        protected override Task<byte[]> GetBytesAsyncInternal(string key, CancellationToken cancellationToken)
+        {
+            byte[] result = GetBytesInternal(key);
+            return Task.FromResult(result);
+        }
+
+        protected override byte[] GetBytesInternal(string key)
+        {
+            string base64 = GetStringInternal(key);
+            return Convert.FromBase64String(base64);
+        }
+
         protected override Task<float> GetFloatAsyncInternal(string fullPath, CancellationToken cancellationToken = default)
         {
             float result = GetFloatInternal(fullPath);
@@ -63,6 +76,18 @@ namespace Raccoons.Storage
         protected override string GetStringInternal(string fullPath)
         {
             return PlayerPrefs.GetString(fullPath);
+        }
+
+        protected override Task SetBytesAsyncInternal(string key, byte[] value, CancellationToken cancellationToken)
+        {
+            SetBytesInternal(key, value);
+            return Task.CompletedTask;
+        }
+
+        protected override void SetBytesInternal(string key, byte[] value)
+        {
+            string base64 = Convert.ToBase64String(value);
+            SetStringInternal(key, base64);
         }
 
         protected override Task SetFloatAsyncInternal(string fullPath, float value, CancellationToken cancellationToken = default)
