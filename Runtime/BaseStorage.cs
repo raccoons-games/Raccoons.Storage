@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Raccoons.Storage
@@ -56,69 +57,69 @@ namespace Raccoons.Storage
             return CombinePath(Key, key);
         }
 
-        public Task<string> GetStringAsync(string key)
+        public Task<string> GetStringAsync(string key, CancellationToken cancellationToken = default)
         {
             string fullPath = PathOf(key);
-            return GetStringAsyncInternal(fullPath);
+            return GetStringAsyncInternal(fullPath, cancellationToken);
         }
 
-        protected abstract Task<string> GetStringAsyncInternal(string fullPath);
+        protected abstract Task<string> GetStringAsyncInternal(string fullPath, CancellationToken cancellationToken = default);
 
-        public Task<int> GetIntAsync(string key)
+        public Task<int> GetIntAsync(string key, CancellationToken cancellationToken = default)
         {
             string fullPath = PathOf(key);
-            return GetIntAsyncInternal(fullPath);
+            return GetIntAsyncInternal(fullPath, cancellationToken);
         }
 
-        protected abstract Task<int> GetIntAsyncInternal(string fullPath);
+        protected abstract Task<int> GetIntAsyncInternal(string fullPath, CancellationToken cancellationToken = default);
 
-        public Task<float> GetFloatAsync(string key)
+        public Task<float> GetFloatAsync(string key, CancellationToken cancellationToken = default)
         {
             string fullPath = PathOf(key);
-            return GetFloatAsyncInternal(fullPath);
+            return GetFloatAsyncInternal(fullPath, cancellationToken);
         }
 
-        protected abstract Task<float> GetFloatAsyncInternal(string fullPath);
+        protected abstract Task<float> GetFloatAsyncInternal(string fullPath, CancellationToken cancellationToken = default);
 
-        public Task SetStringAsync(string key, string value)
+        public Task SetStringAsync(string key, string value, CancellationToken cancellationToken = default)
         {
             string fullPath = PathOf(key);
-            return SetStringAsyncInternal(fullPath, value);
+            return SetStringAsyncInternal(fullPath, value, cancellationToken);
         }
 
-        protected abstract Task SetStringAsyncInternal(string fullPath, string value);
+        protected abstract Task SetStringAsyncInternal(string fullPath, string value, CancellationToken cancellationToken = default);
 
-        public Task SetIntAsync(string key, int value)
+        public Task SetIntAsync(string key, int value, CancellationToken cancellationToken = default)
         {
             string fullPath = PathOf(key);
-            return SetIntAsyncInternal(fullPath, value);
+            return SetIntAsyncInternal(fullPath, value, cancellationToken);
         }
 
-        protected abstract Task SetIntAsyncInternal(string fullPath, int value);
+        protected abstract Task SetIntAsyncInternal(string fullPath, int value, CancellationToken cancellationToken = default);
 
-        public Task SetFloatAsync(string key, float value)
+        public Task SetFloatAsync(string key, float value, CancellationToken cancellationToken = default)
         {
             string fullPath = PathOf(key);
-            return SetFloatAsyncInternal(fullPath, value);
+            return SetFloatAsyncInternal(fullPath, value, cancellationToken);
         }
 
-        protected abstract Task SetFloatAsyncInternal(string fullPath, float value);
+        protected abstract Task SetFloatAsyncInternal(string fullPath, float value, CancellationToken cancellationToken = default);
 
-        public Task<bool> ExistsAsync(string key)
+        public Task<bool> ExistsAsync(string key, CancellationToken cancellationToken = default)
         {
             string fullPath = PathOf(key);
-            return ExistsAsyncInternal(fullPath);
+            return ExistsAsyncInternal(fullPath, cancellationToken);
         }
 
-        protected abstract Task<bool> ExistsAsyncInternal(string fullPath);
+        protected abstract Task<bool> ExistsAsyncInternal(string fullPath, CancellationToken cancellationToken = default);
 
-        public Task DeleteAsync(string key)
+        public Task DeleteAsync(string key, CancellationToken cancellationToken = default)
         {
             string fullPath = PathOf(key);
-            return DeleteAsyncInternal(fullPath);
+            return DeleteAsyncInternal(fullPath, cancellationToken);
         }
 
-        protected abstract Task DeleteAsyncInternal(string fullPath);
+        protected abstract Task DeleteAsyncInternal(string fullPath, CancellationToken cancellationToken = default);
 
         public string GetString(string key)
         {
