@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -13,16 +14,16 @@ namespace Raccoons.Storage
         public void AddChild(IStorage child);
         public void RemoveChild(IStorage child);
 
-        public Task<string> GetStringAsync(string key);
-        public Task<int> GetIntAsync(string key);
-        public Task<float> GetFloatAsync(string key);
+        public Task<string> GetStringAsync(string key, CancellationToken cancellationToken = default);
+        public Task<int> GetIntAsync(string key, CancellationToken cancellationToken = default);
+        public Task<float> GetFloatAsync(string key, CancellationToken cancellationToken = default);
 
-        public Task SetStringAsync(string key, string value);
-        public Task SetIntAsync(string key, int value);
-        public Task SetFloatAsync(string key, float value);
+        public Task SetStringAsync(string key, string value, CancellationToken cancellationToken = default);
+        public Task SetIntAsync(string key, int value, CancellationToken cancellationToken = default);
+        public Task SetFloatAsync(string key, float value, CancellationToken cancellationToken = default);
 
-        public Task<bool> ExistsAsync(string key);
-        public Task DeleteAsync(string key);
+        public Task<bool> ExistsAsync(string key, CancellationToken cancellationToken = default);
+        public Task DeleteAsync(string key, CancellationToken cancellationToken = default);
 
         public string GetString(string key);
         public int GetInt(string key);
