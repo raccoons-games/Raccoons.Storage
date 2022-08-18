@@ -10,7 +10,7 @@ namespace Raccoons.Storage
     {
         private readonly string _key;
         private IStorage _parent;
-        protected List<IStorage> _children;
+        protected List<IStorage> _children = new List<IStorage>();
 
         public BaseStorage(string key, IStorage parent = null)
         {
@@ -34,7 +34,7 @@ namespace Raccoons.Storage
                 {
                     Parent.RemoveChild(this);
                 }
-                Parent = value;
+                _parent = value;
                 if (Parent != null)
                 {
                     Parent.AddChild(this);
@@ -44,7 +44,10 @@ namespace Raccoons.Storage
 
         void IStorage.AddChild(IStorage child)
         {
-            _children.Add(child);
+            if (!_children.Contains(child))
+            {
+                _children.Add(child);
+            }
         }
 
         void IStorage.RemoveChild(IStorage child)

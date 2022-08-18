@@ -39,5 +39,6 @@ namespace Raccoons.Storage
 
         public bool Exists(string key);
         public void Delete(string key);
+
     }
 }
