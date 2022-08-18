@@ -10,7 +10,7 @@ namespace Raccoons.Storage
     {
         private readonly string _key;
         private IStorage _parent;
-        protected List<IStorage> _children;
+        protected List<IStorage> _children = new List<IStorage>();
 
         public BaseStorage(string key, IStorage parent = null)
         {
