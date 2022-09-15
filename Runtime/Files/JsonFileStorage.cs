@@ -1,6 +1,7 @@
 ﻿using Codice.Client.Commands;
 using Newtonsoft.Json;
 using Raccoons.Files;
+using Raccoons.Serialization.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -16,7 +17,7 @@ namespace Raccoons.Storage.Files
     /// </summary>
     public class JsonFileStorage : BaseFileStorage, IEnumerable<KeyValuePair<string, object>>
     {
-        private JsonStorageDictionary _dictionary = new JsonStorageDictionary();
+        private NewtonsoftJsonDictionary _dictionary = new NewtonsoftJsonDictionary();
         private object _dictionaryLock = new object();
 
         public JsonFileStorage(string key, FileStorageSettings settings, IStorage parent = null) : base(key, settings, parent)

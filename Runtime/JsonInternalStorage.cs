@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using Raccoons.Serialization.Json;
+using System.IO;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -10,7 +11,7 @@ namespace Raccoons.Storage
     /// </summary>
     public class JsonInternalStorage : BaseInternalStorage
     {
-        private JsonStorageDictionary _dictionary = new JsonStorageDictionary();
+        private NewtonsoftJsonDictionary _dictionary = new NewtonsoftJsonDictionary();
         public JsonInternalStorage(string key, IStorage parent) : base(key, parent)
         {
         }
