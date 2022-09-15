@@ -108,6 +108,5 @@ namespace Raccoons.Storage
         {
             return false;
         }
-
     }
 }
