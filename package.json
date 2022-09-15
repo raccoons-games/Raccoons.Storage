@@ -1,8 +1,8 @@
 {
   "name": "com.raccoons.storage",
   "displayName": "Raccoons Storage",
-  "version": "0.1.0",
-  "description": "Storage framework, provides base composite storage architecture and PlayerPrefs-based implementation",
+  "version": "0.3.0",
+  "description": "Storage framework, provides storage architecture and implementations on PlayerPrefs and FileSystem. Requires Newtonsoft.Json.",
   "unity": "2018.1",
   "author": "Raccoons Games",
   "repository": {
@@ -22,19 +22,12 @@
   "homepage": "https://github.com/raccoons-games/Raccoons.Storage#readme",
   "samples": [
     {
-      "displayName": "Simple storage",
+      "displayName": "Samples",
       "description": "Contains sample scene with storing float and string value",
-      "path": "Samples~/SimpleStorage"
-    },
-    {
-      "displayName": "Multilevel storage",
-      "description": "Contains an example how useful is to init storages with parents",
-      "path": "Samples~/MultilevelStorage"
-    },
-    {
-      "displayName": "Scriptable storage",
-      "description": "Contains example of creating storage assets and their hierarchy",
-      "path": "Samples~/ScriptableStorage"
+      "path": "Samples~"
     }
-  ]
+  ],
+  "dependencies": {
+    "com.raccoons.files": ""
+  }
 }

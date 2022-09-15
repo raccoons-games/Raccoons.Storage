@@ -18,14 +18,16 @@ namespace Raccoons.Storage.Instances
 
         public IStorage Storage 
         {
-            get => _storage ??= CreateStorage(key, parent);
+            get => _storage ??= CreateStorage(key, parent.Storage);
         }
 
-        public string Key => Storage.Key;
+        public string Path => Storage.Path;
 
         public IStorage Parent { get => Storage.Parent; set => Storage.Parent = value; }
 
         public IEnumerable<IStorage> Children => Storage.Children;
+
+        public string Key => Storage.Key;
 
         public void AddChild(IStorage child)
         {
