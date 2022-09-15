@@ -5,11 +5,16 @@ using UnityEngine;
 
 namespace Raccoons.Storage
 {
-    public class PlayerPrefsStorage : BaseStorage
+    /// <summary>
+    /// Storage that stores its values in PlayerPrefs
+    /// </summary>
+    public class PlayerPrefsStorage : BaseFullPathStorage
     {
         public PlayerPrefsStorage(string key, IStorage parent = null) : base(key, parent)
         {
         }
+
+        public override char Separator => '/';
 
         protected override Task DeleteAsyncInternal(string fullPath, CancellationToken cancellationToken = default)
         {
@@ -121,6 +126,12 @@ namespace Raccoons.Storage
         protected override void SetStringInternal(string fullPath, string value)
         {
             PlayerPrefs.SetString(fullPath, value);
+        }
+
+        public override bool OpenStorageForDebug()
+        {
+            Debug.Log($"[{GetType().Name}] Cannot open PlayerPrefs-storage for debugging. More details about how to access it: https://docs.unity3d.com/ScriptReference/PlayerPrefs.html");
+            return base.OpenStorageForDebug();
         }
     }
 }
