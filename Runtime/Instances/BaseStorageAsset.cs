@@ -18,7 +18,7 @@ namespace Raccoons.Storage.Instances
 
         public IStorage Storage 
         {
-            get => _storage ??= CreateStorage(key, parent.Storage);
+            get => _storage ??= CreateStorage(key, parent?.Storage);
         }
 
         public string Path => Storage.Path;
