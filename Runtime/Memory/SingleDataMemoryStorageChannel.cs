@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Raccoons.Storages.Memory
+namespace Raccoons.Storage.Memory
 {
     public class SingleDataMemoryStorageChannel : IStorageChannel
     {
@@ -52,9 +52,12 @@ namespace Raccoons.Storages.Memory
 
         public TData GetData<TData>(string key)
         {
-            if (Key.Equals(key))
+            if (!string.IsNullOrEmpty(Key) && Key.Equals(key))
             {
-                return (TData)_data;
+                if (_data is TData castedData)
+                {
+                    return castedData;
+                }
             }
             return default;
         }
