@@ -1,7 +1,7 @@
 {
   "name": "com.raccoons.storage",
   "displayName": "Raccoons Storage",
-  "version": "0.3.0",
+  "version": "0.3.5",
   "description": "Storage framework, provides storage architecture and implementations on PlayerPrefs and FileSystem. \nRequires:\n- Raccoons.Files\n- Raccoons.Serialization.NewtonsoftJson",
   "unity": "2018.1",
   "author": "Raccoons Games",
