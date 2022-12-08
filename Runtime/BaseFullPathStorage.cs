@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 
 namespace Raccoons.Storage
@@ -143,7 +140,7 @@ namespace Raccoons.Storage
         public override Task<byte[]> GetBytesAsync(string key, CancellationToken cancellationToken = default)
         {
             string fullPath = PathOf(key);
-            return GetBytesAsyncInternal(key, cancellationToken);
+            return GetBytesAsyncInternal(fullPath, cancellationToken);
         }
 
         protected abstract Task<byte[]> GetBytesAsyncInternal(string key, CancellationToken cancellationToken);
@@ -151,7 +148,7 @@ namespace Raccoons.Storage
         public override Task SetBytesAsync(string key, byte[] value, CancellationToken cancellationToken = default)
         {
             string fullPath = PathOf(key);
-            return SetBytesAsyncInternal(key, value, cancellationToken);
+            return SetBytesAsyncInternal(fullPath, value, cancellationToken);
         }
 
         protected abstract Task SetBytesAsyncInternal(string key, byte[] value, CancellationToken cancellationToken);
@@ -159,7 +156,7 @@ namespace Raccoons.Storage
         public override byte[] GetBytes(string key)
         {
             string fullPath = PathOf(key);
-            return GetBytesInternal(key);
+            return GetBytesInternal(fullPath);
         }
 
         protected abstract byte[] GetBytesInternal(string key);
@@ -167,7 +164,7 @@ namespace Raccoons.Storage
         public override void SetBytes(string key, byte[] value)
         {
             string fullPath = PathOf(key);
-            SetBytesInternal(key, value);
+            SetBytesInternal(fullPath, value);
         }
 
         protected abstract void SetBytesInternal(string key, byte[] value);
