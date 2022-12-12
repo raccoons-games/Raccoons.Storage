@@ -22,7 +22,7 @@ namespace Raccoons.Storage.Memory
 
         public void Delete(string key)
         {
-            if (key.Equals(Key))
+            if (!string.IsNullOrEmpty(Key) && Key.Equals(Key))
             {
                 _data = default;
                 Key = default;
@@ -37,7 +37,7 @@ namespace Raccoons.Storage.Memory
 
         public bool Exists(string key)
         {
-            return (Key.Equals(key));
+            return (!string.IsNullOrEmpty(Key) && Key.Equals(key));
         }
 
         public Task<bool> ExistsAsync(string key, CancellationToken cancellationToken = default)
