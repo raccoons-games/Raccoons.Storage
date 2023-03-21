@@ -48,6 +48,10 @@ namespace Raccoons.Storage.Cryptography.Aes
             int strLen = keyLength;
             key = EncryptionExtensions.SupportLength(key, strLen);
             iv = EncryptionExtensions.SupportLength(iv, 16);
+#if UNITY_EDITOR
+            UnityEditor.EditorUtility.SetDirty(this);
+            UnityEditor.AssetDatabase.SaveAssets();
+#endif
         }
     }
 }
