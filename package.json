@@ -28,8 +28,8 @@
     }
   ],
   "dependencies": {
+    "com.raccoons.serialization": "",
     "com.raccoons.files": "",
     "com.raccoons.serialization.newtonsoftjson": ""
   }
 }
-

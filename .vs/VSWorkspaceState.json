@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Runtime"
   ],
-  "SelectedNode": "\\D:\\Work\\Raccoons.Framework\\Storages\\5ttt\\My project\\Packages\\Raccoons.Storage",
+  "SelectedNode": "\\Runtime\\BaseFullPathStorage.cs",
   "PreviewInSolutionExplorer": false
 }

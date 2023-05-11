@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 
 namespace Raccoons.Storage
 {
+
     public interface IStorageChannel
     {
         string Key { get; }
