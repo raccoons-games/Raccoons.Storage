@@ -41,17 +41,34 @@ namespace Raccoons.Storage.Cryptography.Aes
             AesEncryption = new AesEncryption(key, iv, blockSize, cipherMode, paddingMode);
         }
 
-        private void OnValidate()
-        {
-            blockSize = Mathf.ClosestPowerOfTwo(blockSize);
-            keyLength = Mathf.ClosestPowerOfTwo(keyLength);
-            int strLen = keyLength;
-            key = EncryptionExtensions.SupportLength(key, strLen);
-            iv = EncryptionExtensions.SupportLength(iv, 16);
 #if UNITY_EDITOR
-            UnityEditor.EditorUtility.SetDirty(this);
-            UnityEditor.AssetDatabase.SaveAssets();
-#endif
+        public void Verify(bool askToAdjust = true)
+        {
+            var newBlockSize = Mathf.ClosestPowerOfTwo(blockSize);
+            var newKeyLength = Mathf.ClosestPowerOfTwo(keyLength);
+            int strLen = newKeyLength;
+            var newKey = EncryptionExtensions.SupportLength(key, strLen);
+            var newIV = EncryptionExtensions.SupportLength(iv, 16);
+            if (newBlockSize != blockSize || newKeyLength != keyLength || newIV != iv || newKey != key)
+            {
+                if (!askToAdjust || UnityEditor.EditorUtility.DisplayDialog("Adjust key?", "The key doesn't fit requirements. Do you want to adjust it automatically?", "Yes", "No"))
+                {
+                    blockSize = newBlockSize;
+                    keyLength = newKeyLength;
+                    iv = newIV;
+                    key = newKey;
+                    UnityEditor.EditorUtility.SetDirty(this);
+                    UnityEditor.AssetDatabase.SaveAssets();
+                }
+            }
         }
+
+        public void Regenerate()
+        {
+            key = "";
+            iv = "";
+            Verify(false);
+        }
+#endif
     }
 }
